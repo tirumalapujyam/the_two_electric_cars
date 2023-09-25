@@ -1,6 +1,7 @@
 package cars;
 
 public interface Car {
-    String TYPE_CONVERTIBLE = "Convertible";
 
+    Integer calculateRequiredChargingTime(Integer distanceToBeCovered);
+    Integer calculateRequiredChargingTime(Integer distanceToBeCovered, double threshold);
 }

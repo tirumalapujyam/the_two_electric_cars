@@ -6,12 +6,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ConvertibleElectricCars extends ElectricCars{
+public class ConvertibleCar extends ElectricCars{
     private boolean hasRoofOpen;
 
-    public ConvertibleElectricCars(String model, String color, @NonNull Integer batteryCapacityInKWh,
-                                   @NonNull Integer batteryRangeInMiles, @NonNull Integer chargingCapacityPerHourInMiles) {
-        super(model, TYPE_CONVERTIBLE, color, batteryCapacityInKWh, batteryRangeInMiles, chargingCapacityPerHourInMiles);
+    public ConvertibleCar(String model, String type, String color, @NonNull Integer batteryCapacityInKWh,
+                          @NonNull Integer batteryRangeInMiles, @NonNull Integer chargingCapacityPerHourInMiles) {
+        super(model, type, color, batteryCapacityInKWh, batteryRangeInMiles, chargingCapacityPerHourInMiles);
         hasRoofOpen = false;
     }
 

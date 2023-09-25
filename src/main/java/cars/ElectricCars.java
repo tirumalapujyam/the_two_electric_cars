@@ -13,7 +13,7 @@ public class ElectricCars implements Car{
     private Integer batteryCapacityInKWh;
     private Integer batteryRangeInMiles;
     private Integer chargingCapacityPerHourInMiles;
-
+    private boolean hasRoofOpen;
 
     public ElectricCars(@NonNull String model, @NonNull String type, @NonNull String color,
                         @NonNull Integer batteryCapacityInKWh,
@@ -24,11 +24,11 @@ public class ElectricCars implements Car{
         this.batteryCapacityInKWh = batteryCapacityInKWh;
         this.batteryRangeInMiles = batteryRangeInMiles;
         this.chargingCapacityPerHourInMiles = chargingCapacityPerHourInMiles;
+        this.hasRoofOpen = !"Convertible".equalsIgnoreCase(type);
     }
 
-    public int calculateRequiredChargingTime(Integer distanceToBeCovered){
-        System.out.println("batteryRangeInMiles: " + batteryRangeInMiles + " ,  chargingCapacityPerHourInMiles: "
-                + chargingCapacityPerHourInMiles + " ,  distanceToBeCovered:  " + distanceToBeCovered);
+    @Override
+    public Integer calculateRequiredChargingTime(Integer distanceToBeCovered){
         int difference = Math.abs(batteryRangeInMiles - distanceToBeCovered);
         System.out.println(difference);
         int requiredChargingTime = (difference / chargingCapacityPerHourInMiles) + 1;
@@ -36,5 +36,16 @@ public class ElectricCars implements Car{
         System.out.println(chargingCapacityPerHourInMiles);
         return requiredChargingTime > chargingCapacityPerHourInMiles ? chargingCapacityPerHourInMiles : requiredChargingTime;
     }
+    @Override
+    public Integer calculateRequiredChargingTime(Integer distanceToBeCovered, double threshold){
+
+        int difference = Math.abs(batteryRangeInMiles - distanceToBeCovered);
+        System.out.println(difference);
+        int requiredChargingTime = (difference / chargingCapacityPerHourInMiles) + 1;
+        System.out.println(requiredChargingTime);
+        System.out.println(chargingCapacityPerHourInMiles);
+        return requiredChargingTime > chargingCapacityPerHourInMiles ? chargingCapacityPerHourInMiles : requiredChargingTime;
+    }
+
 
 }
